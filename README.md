@@ -41,3 +41,6 @@ jacocoX {
 ![img_2.png](img_2.png)
 
 #### next you can run you app and testing, in Terminal input **./jacocoreport** when you are finish test, then it will open a report in your browser
+
+![img_3.png](img_3.png)
+
