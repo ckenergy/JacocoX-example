@@ -1,0 +1,12 @@
+apply from: 'baseJacoco.gradle'
+
+//源代码路径，有多少个module，就在这里写多少个路径，如果你只有app一个module，那么就写一个就可以
+//coverageSourceDirs.add()
+
+jacocoX {
+//    compareBranch = "master"
+    compareTag = "fa0885d2"//git Tag
+    infoFile = jacocoInfoFile
+    printLog = true
+    enable = true //release is false
+}

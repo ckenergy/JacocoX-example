@@ -1,0 +1,9 @@
+#!/bin/bash
+export JAVA_HOME='/Applications/Android Studio.app/Contents/jre/Contents/Home'
+adb shell am broadcast -a jacocox.generate.com.ckenergy.jacocox
+sleep 0.5
+./gradlew jacocoInit
+adb pull /storage/emulated/0/Android/data/com.ckenergy.jacocox/cache/coverage/ ./app/build/outputs/code-coverage
+./gradlew jacocoTestMerge
+./gradlew jacocoTestReport
+open ./app/build/reports/jacoco/jacocoTestReport/html/index.html
