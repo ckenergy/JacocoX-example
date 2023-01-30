@@ -9,7 +9,7 @@
 ```groovy
     classpath 'io.github.ckenergy:jacocox-plugin:1.0.2'
 ```
-#### 2、add file baseJacoco.gradle and jacoco.gradle in app dir
+#### 2、add file **baseJacoco.gradle** and **jacoco.gradle** in app dir
 
 like：
 
@@ -19,13 +19,13 @@ like：
 ```groovy
 apply from: 'jacoco.gradle'
 ```
-#### 4、add file jacocoreport into root dir
+#### 4、add file **jacocoreport** into root dir
 
 like：
 
 ![img_1.png](img_1.png)
 
-#### 5、add git compareBranch or compareTag，if them all empty, default compareBranch is master or main
+#### 5、add git **compareBranch** or **compareTag**，if them all empty, default compareBranch is master or main
 ```groovy
 jacocoX {
     //    compareBranch = "master"
@@ -36,8 +36,8 @@ jacocoX {
 }
 ```
 
-#### 6、replace with your applicationId in jacocoreport
+#### 6、replace with your **applicationId** in **jacocoreport**
 
 ![img_2.png](img_2.png)
 
-#### next you can run you app and testing, in Terminal input ./jacocoreport when you are finish test, then it will open a report in your browser
+#### next you can run you app and testing, in Terminal input **./jacocoreport** when you are finish test, then it will open a report in your browser
