@@ -31,8 +31,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             doSome(1L, 3.0, 5, "doSome", 2f, false, list, "ss", 1);
         }
 
-//        LibClass.INSTANCE.show();
-//        MyClass.INSTANCE.show();
+        LibClass.INSTANCE.show();
+        MyClass.INSTANCE.show();
 
         findViewById(R.id.btn).setOnClickListener(new View.OnClickListener() {
             @Override
