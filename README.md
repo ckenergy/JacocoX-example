@@ -1,4 +1,4 @@
-## jacocox is an incremental code coverage plugin
+## jacocox is an Android incremental code coverage plugin
 
 [文档还是中文的好](README-CN.md)
 
