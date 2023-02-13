@@ -7,7 +7,7 @@
 #### 1、root build.gradle
 
 ```groovy
-    classpath 'io.github.ckenergy:jacocox-plugin:1.0.2'
+    classpath 'io.github.ckenergy:jacocox-plugin:$version'
 ```
 #### 2、add file **baseJacoco.gradle** and **jacoco.gradle** in app dir
 

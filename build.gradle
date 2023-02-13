@@ -10,7 +10,7 @@ buildscript {
     }
 
     dependencies {
-        classpath 'io.github.ckenergy:jacocox-plugin:1.0.2'
+        classpath 'io.github.ckenergy:jacocox-plugin:1.0.4'
     }
 }
 

@@ -1,21 +1,22 @@
 package com.ckenergy.jacocox;
 
-import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.Handler;
 import android.util.Log;
 import android.view.View;
 
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.ckenergy.lib.MyClass;
 import com.ckenergy.mylibrary.LibClass;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
+
+    Handler handler = new Handler();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,16 +33,44 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         }
 
         LibClass.INSTANCE.show();
-        MyClass.INSTANCE.show();
+//        MyClass.INSTANCE.show();
 
         findViewById(R.id.btn).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 long start = System.currentTimeMillis();
                 doSome1();
-                Log.e("main", "doSome time:" + (System.currentTimeMillis() - start));
+                Log.e("main", "doSome time1:" + (System.currentTimeMillis() - start));
+
+                handler.post(new Runnable() {
+                    @Override
+                    public void run() {
+                        Log.e("main", "post");
+                    }
+                });
+
             }
+
+            class ss{
+                void ssTest() {
+                    handler.post(() -> Log.e("main", "ssTest"));
+                }
+            }
+
         });
+
+        handler.post(() -> {
+            handler.post(() -> {
+                class mm{
+                    void ttTest() {
+                        Log.e("main", "11ttTest");
+                    }
+                }
+            });
+
+            Log.e("main", "post");
+        });
+
     }
 
     @RequiresApi(Build.VERSION_CODES.O)
@@ -52,12 +81,32 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private void doSome1() {
 //        sendBroadcast(new Intent("jacocox.intent.action.generate"));
 //        JacocoHelper.INSTANCE.generateEcFile(true, this);
-        startActivity(new Intent(this, MainActivity2.class));
+        MainActivity2.Companion.startThis(this);
         finish();
     }
 
     @Override
     public void onClick(View v) {
+        findViewById(R.id.btn).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+            }
+        });
+
+        handler.post(() -> {
+            class mm{
+                void tt1Test() {
+                }
+            }
+        });
 
     }
+
+    class TestInner {
+
+        void test() {
+
+        }
+    }
+
 }
