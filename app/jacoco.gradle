@@ -5,7 +5,7 @@ apply from: 'baseJacocoX.gradle'
 
 jacocoX {
 //    compareBranch = "master"
-    compareTag = "c4f52784"//git Tag
+    compareTag = "97f8270c"//git Tag
     infoFile = jacocoInfoFile
     printLog = true
     enable = true //release is false

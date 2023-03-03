@@ -128,3 +128,21 @@ class MainActivity2: AppCompatActivity() {
     }
 
 }
+
+fun ttest() {
+    val handler = Handler()
+    handler.post {
+        handler.post {
+            class mm {
+                fun ttTest() {
+                    Log.e("main", "11ttTest")
+                }
+            }
+            Log.e("main", "post1")
+        }
+        handler.post {
+            Log.e("main", "post1")
+        }
+        Log.e("main", "post1")
+    }
+}
