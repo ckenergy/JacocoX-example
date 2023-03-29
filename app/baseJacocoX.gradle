@@ -1,6 +1,6 @@
 buildscript {
     ext.jacoco_version = "0.8.4"
-    ext.JacocoX_version = '1.0.5'
+    ext.JacocoX_version = '1.0.6'
     //源代码路径，有多少个module，就在这里写多少个路径，如果你只有app一个module，那么就写一个就可以
     ext.coverageSourceDirs = []
     ext.jacocoDirs = 'reports'
