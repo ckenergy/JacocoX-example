@@ -3,14 +3,9 @@
 
 buildscript {
     ext.kotlin_version = "1.7.10"
-    if (System.properties['os.name'].toString().toLowerCase().contains('windows')) {
-        ext.repositories_url = 'C:\\Users\\Administrator\\.m2\\repository'
-    } else {
-        ext.repositories_url = '/Users/ckenergy/.m2/repository'
-    }
 
     dependencies {
-        classpath 'io.github.ckenergy:jacocox-plugin:1.0.6'
+        classpath 'io.github.ckenergy:jacocox-plugin:1.0.7'
     }
 }
 

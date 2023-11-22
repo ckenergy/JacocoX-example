@@ -55,7 +55,7 @@ val diffs = diffCommand.setShowNameAndStatusOnly(true).call()
 ## 解析增量数据里的类名和方法名
 
 我们想要知道一个java或者kotlin的某一行属于哪个方法，我们首先要把这个文件解析成抽象语法树，简单来说就是获取一个文件的方法和变量等一些信息，
-这里我们会用到解析java的 **ASTGenerator** (代码来源[diff-jacoco](https://github.com/fang-yan-peng/diff-jacoco))和解析kotlin的 **KotlinASTGenerator** (代码来源[kastree](https://github.com/cretz/kastree))
+这里我们会用到解析java的 **ASTGenerator** (代码来源[diff-jacoco](https://github.com/fang-yan-peng/diff-jacoco))
 ```kotlin
 private fun fillKotlinMethodInfos(
         methodInfoList: MutableList<MethodInfo>,
@@ -90,6 +90,29 @@ private fun fillKotlinMethodInfos(
 假设我们获取到了**MainActivity**两个版本之前的Diff数据，我们根据它修改的行数知道了修改的方法，然后我们就可以把这些数据记录下来，大概像这个图这样
 
 ![img_4.png](img_4.png)
+
+由于kotlin编译后class字节码变化很大（同样写法的lambda表达式kotlin可能会生成类或者是一个方法，还有其他的internal等之类也会改变方法名字），这里我们用的是kcp（kotlin compiler plugin）来对kotlin的diff处理，
+(不太了解kcp的可以看看我之前写的[如何利用kcp compose 事件埋点](https://juejin.cn/post/7265903586223243303))
+
+首先我们拿到kotlin的diff的文件名和变更的行数， 然后在kcp的`Transformer`类的的方法`visitFunctionNew`中对比当前方法是否在变更行数中，如果在就添加一个注解`JacocoXDiff`，
+然后再通过ASM过滤方法的注解，选择插入代码，下面会介绍
+``` kotlin
+override fun visitFunctionNew(declaration: IrFunction): IrStatement {
+    val startLine = currentFile.fileEntry.getLineNumber(startOffset)+1
+    val endLine = currentFile.fileEntry.getLineNumber(endOffset).coerceAtLeast(startLine)
+    val find = if (isFakeOverride) null else lines?.find {
+        //判断方法的行数和变更的行数是否有交集
+        startLine in it.first[0] .. it.first[1] || endLine in it.first[0] .. it.first[1] || it.first.any { it1 ->
+            it1 in startLine..endLine
+        }
+    }
+    
+    val irStatement = action(this)
+    if (find != null && irStatement is IrFunction) {
+        ...
+        irStatement.annotations = irStatement.annotations + getDiffAnnotation()
+    }
+```
 
 ## 在插桩和生成报告时过滤增量的方法
 

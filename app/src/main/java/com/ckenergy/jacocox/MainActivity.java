@@ -26,7 +26,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         WatchService.open(this);
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             List<String> list = new ArrayList<>();
-            list.add("position 1");
+            list.add("position 11");
             list.add("position 2");
             list.add("position 3");
             doSome(1L, 3.0, 5, "doSome", 2f, false, list, "ss", 1);
@@ -40,7 +40,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             public void onClick(View v) {
                 long start = System.currentTimeMillis();
                 doSome1();
-                Log.e("main", "doSome time1:" + (System.currentTimeMillis() - start));
+                Log.e("main", "doSome time11:" + (System.currentTimeMillis() - start));
 
                 handler.post(new Runnable() {
                     @Override
@@ -53,7 +53,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
             class ss{
                 void ssTest() {
-                    handler.post(() -> Log.e("main", "ssTest"));
+                    handler.post(() -> Log.e("main1", "ssTest"));
                 }
             }
 

@@ -2,7 +2,7 @@
 
 [文档还是中文的好](README-CN.md)
 
-### How to use
+### How to use(version=1.0.7)
 
 #### 1、root build.gradle
 

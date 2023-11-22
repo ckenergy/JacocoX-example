@@ -6,6 +6,6 @@ package com.ckenergy.mylibrary
 object LibClass {
 
     fun show() {
-        println("show")
+        println("show11")
     }
 }
