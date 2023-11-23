@@ -6,4 +6,4 @@ sleep 0.5
 adb pull /storage/emulated/0/Android/data/com.ckenergy.jacocox/cache/coverage/ ./app/build/outputs/code-coverage
 ./gradlew JacocoXMerge
 ./gradlew JacocoXReport
-open ./app/build/reports/jacoco/jacocoTestReport/html/index.html
+open ./app/build/reports/jacocoXReport/html/index.html

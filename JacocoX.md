@@ -40,13 +40,11 @@ val oldTreeIter = CanonicalTreeParser()
 oldTreeIter.reset(reader, previousHead)
 
 val diffCommand = git!!.diff().setOldTree(oldTreeIter)
-//如果没有最新的newTag，默认用当前的代码，这里会包括未提交到git的代码
-if (!newTag.isNullOrBlank()) {
-    val head = repo.resolve("$newTag^{tree}")
-    val newTreeIter = CanonicalTreeParser()
-    newTreeIter.reset(reader, head)
-    diffCommand.setNewTree(newTreeIter)
-}
+//用当前的代码对比
+val head = repo.resolve("HEAD^{tree}")
+val newTreeIter = CanonicalTreeParser()
+newTreeIter.reset(reader, head)
+diffCommand.setNewTree(newTreeIter)
 //  对比差异
 val diffs = diffCommand.setShowNameAndStatusOnly(true).call()
 ```
@@ -54,7 +52,7 @@ val diffs = diffCommand.setShowNameAndStatusOnly(true).call()
 
 ## 解析增量数据里的类名和方法名
 
-我们想要知道一个java或者kotlin的某一行属于哪个方法，我们首先要把这个文件解析成抽象语法树，简单来说就是获取一个文件的方法和变量等一些信息，
+我们想要知道一个java的某一行属于哪个方法，我们首先要把这个文件解析成抽象语法树，简单来说就是获取一个文件的方法和变量等一些信息，
 这里我们会用到解析java的 **ASTGenerator** (代码来源[diff-jacoco](https://github.com/fang-yan-peng/diff-jacoco))
 ```kotlin
 private fun fillKotlinMethodInfos(

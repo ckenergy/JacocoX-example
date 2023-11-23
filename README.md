@@ -9,15 +9,13 @@
 ```groovy
     classpath 'io.github.ckenergy:jacocox-plugin:$version'
 ```
-#### 2、add file **baseJacoco.gradle** and **jacoco.gradle** in app dir
+#### 2、add file **jacocoX.gradle** in root dir
 
-like：
-
-![img.png](img.png)
-
-#### 3、app build.gradle
+#### 3、root build.gradle
 ```groovy
-apply from: 'jacoco.gradle'
+subprojects {
+    apply from: "$rootProject.projectDir/jacocoX.gradle"
+}
 ```
 #### 4、add file **jacocoreport** into root dir
 
@@ -30,7 +28,6 @@ like：
 jacocoX {
     //    compareBranch = "master"
     compareTag = "****"
-    infoFile = jacocoInfoFile
     printLog = true
     enable = true
 }

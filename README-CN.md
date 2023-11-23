@@ -16,15 +16,13 @@ JacocoX就是一个会根据git diff来获取增量代码的插件，可以对�
 ```groovy
     classpath "io.github.ckenergy:jacocox-plugin:$version"
 ```
-#### 2、 baseJacoco.gradle 、 jacoco.gradle 将这两个文件添加到app目录下
-
-like：
-
-![img.png](img.png)
+#### 2、 jacocoX.gradle 将文件添加到root目录下
 
 #### 3、在 app build.gradle 添加
 ```groovy
-apply from: 'jacoco.gradle'
+subprojects {
+    apply from: "$rootProject.projectDir/jacocoX.gradle"
+}
 ```
 #### 4、添加 jacocoreport 到工程目录
 
@@ -37,7 +35,6 @@ like：
 jacocoX {
     //compareBranch = "master"
     compareTag = "****"
-    infoFile = jacocoInfoFile
     printLog = true
     enable = true//插件内部判断了debug才会生效，所以这里一直写true也没关系
 }

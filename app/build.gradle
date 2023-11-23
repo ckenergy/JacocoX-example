@@ -2,7 +2,8 @@ plugins {
     id 'com.android.application'
 }
 apply plugin: 'kotlin-android'
-apply from: '../jacocoX.gradle'
+
+//apply from: '../jacocoX.gradle'
 
 android {
     compileSdkVersion 30

@@ -2,7 +2,7 @@ plugins {
     id 'com.android.library'
     id 'org.jetbrains.kotlin.android'
 }
-apply from: '../jacocoX.gradle'
+
 android {
     namespace 'com.ckenergy.mylibrary'
     compileSdkVersion 32
