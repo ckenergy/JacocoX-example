@@ -9,7 +9,7 @@
 
 JacocoX就是一个会根据git diff来获取增量代码的插件，可以对比不同分支或相同分支的不同版本（自己配置），想了解[JacocoX的原理](JacocoX.md)
 
-### 如何使用(version=1.0.7)
+### 如何使用(version=1.0.9)
 
 #### 1、在工程目录的 build.gradle添加
 
