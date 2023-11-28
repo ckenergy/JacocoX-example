@@ -17,7 +17,7 @@ fun cc() {
                     Log.e("main", "11ttTest")
                 }
             }
-            Log.e("main", "post1")
+            Log.e("main", "post11")
         }
         handler.post {
             Log.e("main", "post1")

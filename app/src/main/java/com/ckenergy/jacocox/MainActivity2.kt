@@ -48,13 +48,13 @@ class MainActivity2: AppCompatActivity() {
             override fun onClick(v: View) {
                 val start = System.currentTimeMillis()
                 doSome1()
-                Log.e("main", "doSome time1:" + (System.currentTimeMillis() - start))
+                Log.e("main", "doSome time11:" + (System.currentTimeMillis() - start))
                 handler.post { Log.e("main", "post") }
             }
 
             inner class ss {
                 fun ssTest() {
-                    handler.post { Log.e("main", "ssTest") }
+                    handler.post { Log.e("main1", "ssTest") }
                 }
             }
         }
@@ -63,7 +63,7 @@ class MainActivity2: AppCompatActivity() {
             override fun onClick(v: View) {
                 val start = System.currentTimeMillis()
                 doSome1()
-                Log.e("main", "doSome time1:" + (System.currentTimeMillis() - start))
+                Log.e("main", "doSome time11:" + (System.currentTimeMillis() - start))
                 handler.post { Log.e("main", "post") }
             }
 

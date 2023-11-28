@@ -2,7 +2,7 @@ apply plugin: 'JacocoX'
 
 jacocoX {
 //    compareBranch = "master"
-    compareTag = "97f8270c"
+    compareTag = "34c1bd0b"
     printLog = false
     enable = true
     filterLog = "ckenergy"

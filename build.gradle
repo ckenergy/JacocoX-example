@@ -5,7 +5,7 @@ buildscript {
     ext.kotlin_version = "1.7.10"
 
     dependencies {
-        classpath 'io.github.ckenergy:jacocox-plugin:1.0.7'
+        classpath 'io.github.ckenergy:jacocox-plugin:1.0.9'
     }
 
 }
